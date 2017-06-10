@@ -112,17 +112,17 @@ void polygon2(int a, int b, int c, int d){
 void base(){ 
 	textureId = LoadTexture("img/ground.bmp");
 	glBindTexture(GL_TEXTURE_2D, textureId);
-	glColor3f(0.5f, 0.35f, 0.05f);
+	glColor3f(0.69f, 0.5428f, 0.138f);
 		polygon2(0,3,2,1);
 		polygon2(2,3,7,6);
 		polygon(0,3,7,4);
 	textureId = LoadTexture("img/grass.bmp");
 	glBindTexture(GL_TEXTURE_2D, textureId);
-	glColor3f(0.0f, 0.35f, 0.00f);
+	glColor3f(0.4876f, 0.69f, 0.1380f);
 		polygon2(1,2,6,5);
 	textureId = LoadTexture("img/ground.bmp");
 	glBindTexture(GL_TEXTURE_2D, textureId);
-	glColor3f(0.5f, 0.35f, 0.05f);
+	glColor3f(0.69f, 0.5428f, 0.05f);
 		polygon2(4,5,6,7);
 		polygon2(0,1,5,4);
 	} 
@@ -432,7 +432,6 @@ void trees()
 /*You know i need this */
 void display(void) { 
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
-	glViewport(0,0,700,700); 
 	gluLookAt(viewer[0],viewer[1],viewer[2],0.0,0.0,0.0,0.0,1.0,0.0); //fixed viewer
 	glRotatef(theta[0],1.0,0.0,0.0);
 	glRotatef(theta[1],0.0,1.0,0.0);
@@ -476,6 +475,7 @@ void display(void) {
 
 	glFlush();
 	glLoadIdentity();
+	 glutSwapBuffers();
 } 
 
 
@@ -496,6 +496,7 @@ void keys(unsigned char key, int x, int y) {
 	if(key == 'z') axis=2;
 	/*Reset*/
 	if(key == 'r') { theta[0] = 28.0;theta[1] = 4.0;theta[2] = 0.0;}
+	if(key == 27 ){ exit(0);}
 	//theta[axis]+=0.75; //fine tuned
 	theta[axis]+=8.0; //fast for testing
     if(theta[axis]>360.0) theta[axis]-=360.0;
@@ -504,17 +505,26 @@ void keys(unsigned char key, int x, int y) {
 
 /*Just pesudo fuction outside the main even it could be inside main hahhahaha*/
 void myinit() {
+	//glViewport(0,0,1000,1000);
+	//glClearColor(1.0,1.0,1.0,1.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-6.0,6.0,-8.0,8.0,-2.0,50.0);
     glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();	
-						glRotated(50,0.0,1.0,0.0);
-					glGetDoublev(GL_MODELVIEW_MATRIX, matrix);
-		glPopMatrix();
-		glEnable(GL_POINT_SMOOTH);
-		glHint(	GL_POINT_SMOOTH_HINT,
- 	GL_NICEST);
+}
+
+void myReshape(int w, int h)
+{
+	glViewport(0,0,w,h);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	if(w<=h)
+		glOrtho(-6.0,6.0,-8.0*(GLfloat)h/(GLfloat)w, 
+                  8.0*(GLfloat)h/(GLfloat)w,-10.0,10.0);
+	else
+		glOrtho(-6.0*(GLfloat)w/(GLfloat)h,
+                  6.0*(GLfloat)w/(GLfloat)h, -8.0,8.0,-10.0,10.0);
+	glMatrixMode(GL_MODELVIEW);
 }
 
 
@@ -532,10 +542,12 @@ glutPostRedisplay();
 /*Start reading from here ignore all the comment */
 void main(int argc, char **argv) {
     glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB|GLUT_DEPTH);
-    glutInitWindowSize(700,700);
+    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB|GLUT_DEPTH);
+    glutInitWindowSize(1000,1000);
     glutCreateWindow("Colorcube Viewer");
+	glutReshapeFunc(myReshape);
     glutDisplayFunc(display);
+	//glutFullScreen();
     glutMouseFunc(mouse);
 	glutIdleFunc(idel);
     glutKeyboardFunc(keys);
