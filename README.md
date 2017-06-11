@@ -9,9 +9,9 @@ and is optimize for faster processing
 Visual Studio 2010
 ```
 
-### Key combination After Running the program
+## Key combination After Running the program
 
-###Keys that can be used for different event
+### Keys that can be used for different event
 
 ```
 Press f for full screen while running the program
