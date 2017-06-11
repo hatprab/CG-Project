@@ -11,12 +11,14 @@ Visual Studio 2010
 
 ### Key combination After Running the program
 
-###Keys that can be used for diffrernt event
+###Keys that can be used for different event
 
 ```
 Press f for full screen while running the program
 Press x,y,z for rotation along respective axis
 Press r for reset to default position
+
+Press Mouse Primary button to start Erruption of the lava
 ```
 
 ## Deployment
