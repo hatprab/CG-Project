@@ -29,6 +29,11 @@ Open [Simulation.sln](https://github.com/hatprab/CG-Project/blob/master/Simulati
 
 * [glut](https://www.opengl.org/resources/libraries/glut/) - The header file used
 
+## Output Screenshot
+
+![Alt text](http://i.imgur.com/NeRh8RR.png)
+![Alt text](http://i.imgur.com/LWYlQts.png)
+
 ## Authors
 
 * **Prabhat Prasad** - *Initial work* - [Prabhat](https://github.com/hatprab)
