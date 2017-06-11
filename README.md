@@ -16,19 +16,16 @@ Visual Studio 2010
 ```
 Press f for full screen while running the program
 Press x,y,z for rotation along respective axis
+Press r for reset to default position
 ```
 
 ## Deployment
 
-Open Simulation.sln with Visual Studio to work with the code and execute . The images is kept in img folder. 
+Open [Simulation.sln](https://github.com/hatprab/CG-Project/blob/master/Simulation.sln) with Visual Studio to work with the code and execute .
 
 ## Built With
 
 * [glut](https://www.opengl.org/resources/libraries/glut/) - The header file used
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
@@ -36,7 +33,6 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* Used this site for rendring texture - [Learn OpenGL](https://learnopengl.com/#!Getting-started/Textures)
+* Used this site for getting color codes - [RGBtool](http://rgbtool.com)
 
